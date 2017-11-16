@@ -44,7 +44,7 @@ https://accounts.google.com/displayunlockcaptcha
 
 WEATHER_API_KEY = os.environ['WEATHER_API_KEY']
 
-DJANGO_SETTINGS_MODULE = 'weathermain.settings'
+DJANGO_SETTINGS_MODULE = 'weather.settings'
 
 
 # Application definition
@@ -69,7 +69,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'weathermain.urls'
+ROOT_URLCONF = 'weather.urls'
 
 TEMPLATES = [
     {
@@ -87,7 +87,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'weathermain.wsgi.application'
+WSGI_APPLICATION = 'weather.wsgi.application'
 
 
 # Database

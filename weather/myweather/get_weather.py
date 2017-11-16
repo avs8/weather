@@ -12,19 +12,19 @@ from django.template import Context
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "weathermain.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "weather.settings")
 data = Weather.objects.all()
 locations = [i.encode("utf8").replace('\t', " ").split(',') for i in Weather.objects.values_list('location', flat=True)]
 
 
 def get_image(feelslike_string):
-    images = {'cloudy': 'http://www.freeimageslive.com/galleries/nature/weathermain/pics/rain_clouds_162145.jpg',
+    images = {'cloudy': 'http://www.freeimageslive.com/galleries/nature/weather/pics/rain_clouds_162145.jpg',
               'partlycloudy': 'http://news.uzreport.uz/foto/2013/08/tmb1/13757150171.jpg',
               'cold': 'http://data.whicdn.com/images/18499845/56998751503531805_MHunGchK_c_large.jpg',
-              'snowy': 'http://www.freeimageslive.com/galleries/nature/weathermain/pics/ice_storm%20morning_228600.jpg',
-              'windy': 'http://www.freeimages.co.uk/galleries/nature/weathermain/slides/lakeside_winter_mist_207837.htm',
-              'rain':'http://www.freeimageslive.com/galleries/nature/weathermain/pics/rainy_day_wet_1013459.jpg',
-              'nice': 'http://www.freeimageslive.com/galleries/nature/weathermain/pics/rainbow_qheensland_5232088.jpg'}
+              'snowy': 'http://www.freeimageslive.com/galleries/nature/weather/pics/ice_storm%20morning_228600.jpg',
+              'windy': 'http://www.freeimages.co.uk/galleries/nature/weather/slides/lakeside_winter_mist_207837.htm',
+              'rain':'http://www.freeimageslive.com/galleries/nature/weather/pics/rainy_day_wet_1013459.jpg',
+              'nice': 'http://www.freeimageslive.com/galleries/nature/weather/pics/rainbow_qheensland_5232088.jpg'}
     if feelslike_string in ['rain', 'scattered thunderstorms', 'showers', 'scattered showers', 'light rain']:
         pic = images['rain']
     elif feelslike_string in ['cloudy', 'overcast', 'chance of storm', 'mostly cloudy']:
@@ -54,7 +54,7 @@ for i, v in enumerate(locations):
     parsed_json = json.loads(json_string)
     city = parsed_json['location']['city']
     state = parsed_json['location']['state']
-    weather = parsed_json['current_observation']['weathermain'].lower()
+    weather = parsed_json['current_observation']['weather'].lower()
     real_temp = parsed_json['current_observation']['temperature_string']
     tem = float(real_temp[:4])
     if tem > 70:
@@ -72,7 +72,7 @@ for i, v in enumerate(locations):
     msg = EmailMultiAlternatives(subject, temp.render(Context({
         'city': city,
         'state': state,
-        'weathermain': weather,
+        'weather': weather,
         'real_temp': real_temp,
         'feelslike_string': feelslike_string,
         'image': image
@@ -80,7 +80,7 @@ for i, v in enumerate(locations):
     msg.attach_alternative(temp.render(Context({
         'city': city,
         'state': state,
-        'weathermain': weather,
+        'weather': weather,
         'real_temp': real_temp,
         'feelslike_string': feelslike_string,
         'image': image
