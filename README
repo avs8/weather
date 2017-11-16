@@ -1,0 +1,21 @@
+#Main Project name is weather and app name is myweather
+
+#activate virtual environment
+source coding-django/bin/activate
+
+# navigate inside weather
+# run migration and collect static
+python manage.py migrate
+python manage.py collectstatic
+
+
+#to run server
+python manage.py runserver
+
+#to send email
+# fire up python shell
+python mange.py shell
+
+#then run
+from myweather import get_weather
+it will print list of url and will send email
