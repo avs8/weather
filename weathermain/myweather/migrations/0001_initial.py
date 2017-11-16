@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.AlterUniqueTogether(
-            name='weather',
+            name='weathermain',
             unique_together=set([('email', 'location')]),
         ),
     ]
