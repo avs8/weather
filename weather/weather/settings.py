@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import local_secret
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,19 +21,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y3j*uki5dlillaur74k%4jm!pnpyejsq5u9%ntk&xo+iflygp9'
+SECRET_KEY = local_secret.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-DEFAULT_FROM_EMAIL = 'myweather10@gmail.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'myweather10@gmail.com'
-EMAIL_HOST_PASSWORD = 'myweather'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = local_secret.DEFAULT_FROM_EMAIL
+EMAIL_HOST = local_secret.EMAIL_HOST
+EMAIL_HOST_USER = local_secret.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = local_secret.EMAIL_HOST_PASSWORD
+EMAIL_PORT = local_secret.EMAIL_HOST
+EMAIL_USE_TLS = local_secret.EMAIL_USE_TLS
 
 
 """
@@ -42,7 +43,7 @@ https://accounts.google.com/displayunlockcaptcha
 """
 
 
-WEATHER_API_KEY = '9684aa929d2291e3'
+WEATHER_API_KEY = local_secret.WEATHER_API_KEY
 
 DJANGO_SETTINGS_MODULE = 'weather.settings'
 

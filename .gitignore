@@ -102,3 +102,6 @@ ENV/
 
 # pycharm
 .idea
+
+#secret file
+local_secret.py
