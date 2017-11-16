@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myweather'
+    'myweather',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +150,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR) + "static_cdn")
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass
