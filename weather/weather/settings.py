@@ -44,7 +44,7 @@ https://accounts.google.com/displayunlockcaptcha
 
 WEATHER_API_KEY = os.environ['WEATHER_API_KEY']
 
-DJANGO_SETTINGS_MODULE = 'weather.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'weather.settings'
 
 
 # Application definition
